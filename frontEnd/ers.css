@@ -1,0 +1,38 @@
+
+#display{
+    background-color:lightcoral;
+}
+
+#employeeContainer {
+    background-color:ivory
+}
+/* rgb(220, 245, 245); */
+#managerContainer{
+    background-color:lightskyblue
+}
+
+#filterBtn:hover
+{
+    cursor: pointer;
+    color:mintcream;
+    font-size: large;
+    font-weight: 500;
+}
+
+.spanStar{
+    color: red
+}
+#errorMessage{
+    background-color:yellow;
+}
+#ersTable, #ersTable2, reimbursementById, tableById{
+    display: none;
+    border: 1px solid black;
+}
+#userInput{
+    display: none;
+}
+
+
+
+

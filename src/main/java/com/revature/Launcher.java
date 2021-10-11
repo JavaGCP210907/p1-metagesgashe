@@ -52,9 +52,9 @@ public class Launcher {
 		
 		
 		
-		ErsReimbursement ersRimb1 = new ErsReimbursement(300, "2021-09-27", null, "imbursement for lodging cost", 10, ersU1, ersU4, ersStatus1, ersType1);
-		ErsReimbursement ersRimb2 = new ErsReimbursement(200, "2021-09-27", java.sql.Date.valueOf(currentDate), "imbursement for food cost", 20, ersU2, ersU4, ersStatus2, ersType3);
-		ErsReimbursement ersRimb3 = new ErsReimbursement(600, "2021-09-27", null, "imbursement for travel cost", 30, ersU3, ersU4, ersStatus3, ersType2);
+		ErsReimbursement ersRimb1 = new ErsReimbursement(300, "2021-09-27", "imbursement for lodging cost", ersU1, ersU4, ersStatus1, ersType1);
+		ErsReimbursement ersRimb2 = new ErsReimbursement(200, "2021-09-27", "imbursement for food cost", ersU2, ersU4, ersStatus2, ersType3);
+		ErsReimbursement ersRimb3 = new ErsReimbursement(600, "2021-09-27", "imbursement for travel cost", ersU3, ersU4, ersStatus3, ersType2);
 		
 		ersReimbDao.addErsReimbursement(ersRimb1);
 		ersReimbDao.addErsReimbursement(ersRimb2);

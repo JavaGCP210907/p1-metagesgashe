@@ -11,7 +11,7 @@
 <body>
 
     <div id="managerContainer" class="container col-10 mt-5">
-      <h1 class="bg-dark text-white">Welcome to Finance Manager's page</h1>
+      <h1 class="bg-primary text-white">Welcome to Finance Manager's page</h1>
         
       <p>In this page you can see all reimbursements for all employees, aprove/deny reimbursement and filter request by status</p>
       <form>
@@ -37,9 +37,9 @@
       </div>
 
         
-        <div class="row mt-5 md-12">
-           <button type="button" id="viewAllBtn" class="btn btn-primary btn-lg col-md-4">View All Reimbursements</button>
-           <div class="form-group col-md-4 bg-success ml-3 p-3">
+        <div class="row m-4 md-12">
+           <button type="button" id="viewAllBtn" class="btn btn-dark btn-lg col-md-4">View All Reimbursements</button>
+           <div id="filter" class="form-group col-md-4 text-info ml-3 p-2">
             <label id="filterBtn" for="inputState"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
               <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z"/>
             </svg>Filter By Status</label>
@@ -52,15 +52,16 @@
           </div>
         </div>
 
-        <div class="row mt-3" id = "table-row">
-          <table id="ersTable" class="table table-hover table-border table-light">
+        <input type="text" id="approveInput" placeholder="Reimbursement Id">
+
+        <div class="row mt-3 col-12" id = "table-row">
+          <table id="ersTable" class="table table-hover table-border table-dark col-12">
           <thead id = "reimbursementsHead">
               <tr>
                   <th>Reimbursement Id</th>
                   <th>Reimbursement Amount</th>
                   <th>Submitted Date</th>
                   <th>Description</th>
-                  <th>Reimb_receipt</th>
                   <th>Author</th>
                   <th>Resolver</th>
                   <th>Status</th>
@@ -69,21 +70,20 @@
                   
               </tr>
           </thead>
-          <tbody id="allReimbursements">
+          <tbody id="allReimbursements" class="bg-secondary text-white">
   
           </tbody>
           </table>
       
       </div> 
-      <div class="row mt-3" id = "table-row">
-        <table id="ersTable2" class="table table-hover table-border table-light">
+      <div class="row mt-3 col-12" id = "table-row">
+        <table id="ersTable2" class="table table-hover table-border table-dark col-12">
         <thead id = "reimbursementsHead">
             <tr>
                 <th>Reimbursement Id</th>
                 <th>Reimbursement Amount</th>
                 <th>Submitted Date</th>
                 <th>Description</th>
-                <th>Reimb_receipt</th>
                 <th>Author</th>
                 <th>Resolver</th>
                 <th>Status</th>
@@ -92,7 +92,7 @@
                 <th><button id="denyBtn" class="bg-danger text-white">deny</button></th>
             </tr>
         </thead>
-        <tbody id="allReimbursements">
+        <tbody id="allReimbursements" class="bg-secondary text-white">
 
         </tbody>
         </table>

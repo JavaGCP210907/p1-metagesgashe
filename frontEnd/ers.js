@@ -184,6 +184,7 @@ async function viewOneFunc(){
             let tr = document.createElement("tr");
     
             let td1 = document.createElement("td");
+            
             td1.innerText = data.reimb_id;
             tr.appendChild(td1); 
     
@@ -192,16 +193,17 @@ async function viewOneFunc(){
             tr.appendChild(td2);
     
             let td3 = document.createElement("td")
-            td3.innerText = data.reimb_submitted;
+            let date = new Date(data.reimb_submitted).toDateString();
+            td3.innerText = date;
             tr.appendChild(td3);
     
             let td4 = document.createElement("td");
             td4.innerText = data.reimb_description;
             tr.appendChild(td4); 
     
-            let td5 = document.createElement("td");
-            td5.innerText = data.reimb_receipt
-            tr.appendChild(td5);
+            // let td5 = document.createElement("td");
+            // td5.innerText = data.reimb_receipt
+            // tr.appendChild(td5);
     
             let td6 = document.createElement("td");
             td6.innerText = data.reimb_author.user_first_name;
@@ -241,6 +243,8 @@ async function viewAllFunc(){
 let response = await fetch(url + "allErs", {credentials: "include"});
 let allReimbursements = document.getElementById("ersTable");
 allReimbursements.style.display = "block";
+let approveInput = document.getElementById("approveInput");
+approveInput.style.display = "none";
 
 if (response.status === 200){
     let reimbursementByStatus = document.getElementById("reimbursementByStatus");
@@ -266,16 +270,17 @@ if (response.status === 200){
         tr.appendChild(td2);
 
         let td3 = document.createElement("td")
-        td3.innerText = ers.reimb_submitted;
+        let date = new Date(ers.reimb_submitted).toDateString()
+        td3.innerText = date;
         tr.appendChild(td3);
 
         let td4 = document.createElement("td");
         td4.innerText = ers.reimb_description;
         tr.appendChild(td4); 
 
-        let td5 = document.createElement("td");
-        td5.innerText = ers.reimb_receipt
-        tr.appendChild(td5);
+        // let td5 = document.createElement("td");
+        // td5.innerText = ers.reimb_receipt
+        // tr.appendChild(td5);
 
         let td6 = document.createElement("td");
         td6.innerText = ers.reimb_author.user_first_name;
@@ -311,6 +316,8 @@ async function filterFunc(){
     let response = await fetch(url + "allErs", {credentials: "include"});
     let allReimbursements2 = document.getElementById("ersTable2");
     allReimbursements2.style.display = "block";
+    let approveInput = document.getElementById("approveInput");
+    approveInput.style.display = "block";
 
         if (response.status === 200){
             
@@ -343,7 +350,7 @@ async function filterFunc(){
                
                 let td9 = document.createElement("td");
 
-                let td10 = document.createElement("input");
+                
 
                 
                 
@@ -356,14 +363,16 @@ async function filterFunc(){
                     td2.innerText = ers.reimb_amount;
                     tr.appendChild(td2);
 
-                    td3.innerText = ers.reimb_submitted;
+                    let td3 = document.createElement("td")
+                    let date = new Date(ers.reimb_submitted).toDateString()
+                    td3.innerText = date;;
                     tr.appendChild(td3);
 
                     td4.innerText = ers.reimb_description;
                     tr.appendChild(td4); 
 
-                    td5.innerText = ers.reimb_receipt
-                    tr.appendChild(td5);
+                    // td5.innerText = ers.reimb_receipt
+                    // tr.appendChild(td5);
 
                     td6.innerText = ers.reimb_author.user_first_name;
                     tr.appendChild(td6);
@@ -377,8 +386,7 @@ async function filterFunc(){
                     td9.innerText = ers.reimb_type.type
                     tr.appendChild(td9);
 
-                    td10.setAttribute("type", "checkbox");
-                    tr.appendChild(td10)
+                   
 
 
                     allReimbursements2.appendChild(tr);
@@ -391,14 +399,15 @@ async function filterFunc(){
                     td2.innerText = ers.reimb_amount;
                     tr.appendChild(td2);
 
-                    td3.innerText = ers.reimb_submitted;
+                    let td3 = document.createElement("td")
+                    let date = new Date(ers.reimb_submitted).toDateString()
+                    td3.innerText = date;
                     tr.appendChild(td3);
 
                     td4.innerText = ers.reimb_description;
                     tr.appendChild(td4); 
 
-                    td5.innerText = ers.reimb_receipt
-                    tr.appendChild(td5);
+                    
 
                     td6.innerText = ers.reimb_author.user_first_name;
                     tr.appendChild(td6);
@@ -426,14 +435,14 @@ async function filterFunc(){
                     td2.innerText = ers.reimb_amount;
                     tr.appendChild(td2);
 
-                    td3.innerText = ers.reimb_submitted;
+                    let td3 = document.createElement("td")
+                    let date = new Date(ers.reimb_submitted).toDateString()
+                    td3.innerText = date;
                     tr.appendChild(td3);
 
                     td4.innerText = ers.reimb_description;
                     tr.appendChild(td4); 
 
-                    td5.innerText = ers.reimb_receipt
-                    tr.appendChild(td5);
 
                     td6.innerText = ers.reimb_author.user_first_name;
                     tr.appendChild(td6);
@@ -447,15 +456,13 @@ async function filterFunc(){
                     td9.innerText = ers.reimb_type.type
                     tr.appendChild(td9);
 
-                    td10.setAttribute("type", "checkbox");
-                    tr.appendChild(td10)
+                    
 
                     
                     allReimbursements2.appendChild(tr);
 
                 } else {
-                   // allReimbursements2.innerText = "Sorry something went wrong"
-                    // p.style.display = "none";
+                   
                 }
             }
         } else {
@@ -478,7 +485,6 @@ async function submitFunc(){
     let reimb_submitted = document.getElementById("reimb_submitted");
     let reimb_resolved = document.getElementById("reimb_resolved");
     let reimb_description = document.getElementById("reimb_description");
-   // let reimb_author = document.getElementById("reimb_author");
     let reimb_resolver = document.getElementById("reimb_resolver");
     let reimb_status = document.getElementById("reimb_status");
     let reimb_type = document.getElementById("reimb_type");
@@ -490,7 +496,7 @@ async function submitFunc(){
     let user_last_name = document.getElementById("user_last_name");
     let user_role_id = document.getElementById("user_role_id");
 
-    if (reimb_amount.value === "" ||reimb_description.value === "" || reimb_status.value === "" || reimb_type.value === "" ||ers_password2.value === "" ||
+    if (reimb_amount.value === "" ||reimb_description.value === "" || reimb_type.value === "" ||ers_password2.value === "" ||
     ers_user_name2.value === "" || user_email.value === "" || user_first_name.value === "" || user_last_name.value === ""){
     
         errorMessage.style.display = "block";
@@ -512,9 +518,7 @@ async function submitFunc(){
         const data = { 
             reimb_amount:  reimb_amount.value,
             reimb_submitted: new Date().toDateString(),
-            reimb_resolved: null,
             reimb_description: reimb_description.value,
-            reimb_receipt: null,
             reimb_author: {ers_password: ers_password2.value,
                 ers_user_name: ers_user_name2.value,
                 user_email: user_email.value,
@@ -529,7 +533,7 @@ async function submitFunc(){
                 user_last_name: "George",
                 user_role_id: {ers_user_role: "f_manager"}
             },
-            reimb_status: {status: reimb_status.value},
+            reimb_status: {status: "pending"},
             reimb_type: {type: reimb_type.value}
         };
         console.log(data);
@@ -537,14 +541,13 @@ async function submitFunc(){
 
         let response = await fetch(url+"submit", {
 
-            method: "POST", //send a POST request
-            body: JSON.stringify(data), //turn our Javascript into JSON
+            method: "POST", 
+            body: JSON.stringify(data), 
             credentials: "include"
             
         })
 
-    // console.log(response); 
-
+   
         
         if(response.status === 201){
             
@@ -564,17 +567,18 @@ async function submitFunc(){
 
 
 async function approveFunc (){
-    //let response = await fetch(url + "allErs", {credentials: "include"});
-    let checkBox = document.querySelectorAll('[type="checkbox"]')[0];
     
-    if (checkBox.checked){
+    
+    let approveInput = document.getElementById("approveInput").value;
+    
         
        
-        let parent = checkBox.parentElement;
-        let num = parseInt(parent.innerHTML[4])
+        
+        let num = parseInt(approveInput)
+        console.log(num);
 
         let response = await fetch(url + "ersById/" + num, {credentials: "include"})
-
+        
         if (response.status === 200){
         
             let data = await response.json()
@@ -586,7 +590,6 @@ async function approveFunc (){
                 "reimb_amount": data.reimb_amount,
                 "reimb_submitted": data.reimb_submitted,
                 "reimb_description": data.reimb_description,
-                "reimb_receipt": data.reimb_receipt,
                 "reimb_author": data.reimb_author,
                 "reimb_resolver": data.reimb_resolver,
                 "reimb_status": {reimb_status_id: 2, status: "approved" },
@@ -623,37 +626,38 @@ async function approveFunc (){
         }
 
 
-     }
+
         
 
     }
     
     async function denyFunc(){
-        let checkBox2 = document.querySelectorAll('[type="checkbox"]')[0];
+       
     
-        if (checkBox2.checked){
+        let approveInput2 = document.getElementById("approveInput").value;
+          
+           
+           
+    
             
            
-           console.log(checkBox2[0]);
-    
-            
-            let parent = checkBox2.parentElement;
-            let num = parseInt(parent.innerHTML[4])
-    
+            let num = parseInt(approveInput2)
+
+            console.log(num);
+
             let response = await fetch(url + "ersById/" + num, {credentials: "include"})
     
             if (response.status === 200){
             
                 let data = await response.json()
     
-               // console.log(data);
+               
     
                 const data1 = { 
                     "reimb_id": num,
                     "reimb_amount": data.reimb_amount,
                     "reimb_submitted": data.reimb_submitted,
                     "reimb_description": data.reimb_description,
-                    "reimb_receipt": data.reimb_receipt,
                     "reimb_author": data.reimb_author,
                     "reimb_resolver": data.reimb_resolver,
                     "reimb_status": {reimb_status_id: 3, status: "denied" },
@@ -684,11 +688,11 @@ async function approveFunc (){
         
               
             }  else {
-                personalTicket.setAttribute("class", "text-danger");
+               personalTicket.setAttribute("class", "text-danger");
                 personalTicket.innerText = "Please login and enter the reimbursement Id!"
                 allReimbursements.style.display = "none";
             }
     
     
-         }
+   
     }

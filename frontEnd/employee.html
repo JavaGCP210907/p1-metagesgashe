@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="employeeContainer" class="container mt-5 col-10">
-      <h1 class="bg-primary">Welcome to employees page</h1>
+      <h1 class="bg-primary text-white">Welcome to employee's page</h1>
       <p>In this page you can see your past tickets or add new reimbursement request</p>
       <form>
         <div class="form-group row">
@@ -39,19 +39,18 @@
         <button id="pastTicketsbtn" type="button" class="btn btn-success btn-lg">View Past Tickets</button>
         <button type="button" id="addReimbursementbtn" class="btn btn-warning btn-lg">Add Reimbursement Request</button><br>
         
-        <input type="text" id="userInput" name="userInput" placeholder="User ID" required>
+        <input type="text" id="userInput" name="userInput" placeholder="User ID" required class="mt-3">
     <div id="personalTicket" class="mt-3">
 
     </div>
-    <div class="row mt-3" id = "tableById">
-      <table id="ersTable" class="table table-hover table-border table-light">
+    <div class="row mt-3 col-10" id = "tableById">
+      <table id="ersTable" class="table table-hover table-border table-dark col-12">
       <thead id = "reimbursementsHead">
           <tr>
               <th>Reimbursement Id</th>
               <th>Reimbursement Amount</th>
               <th>Submitted Date</th>
               <th>Description</th>
-              <th>Reimb_receipt</th>
               <th>Author</th>
               <th>Resolver</th>
               <th>Status</th>
@@ -59,13 +58,13 @@
               
           </tr>
       </thead>
-      <tbody id="reimbursementById">
+      <tbody id="reimbursementById" class="bg-secondary text-white p-2">
 
       </tbody>
       </table>
   
   </div> 
-    <div id="valuesDisplay">
+    <div id="valuesDisplay" class="m-5">
 
     </div>
   
@@ -74,44 +73,34 @@
               <p id="errorMessage" class="mt-3 text-center text-danger"></p>
               <div class="form-group col-md-8">
                 <label for="username2" ></label><span class="spanStar">*</span>User Name</label>
-                <input type="email" class="form-control" id="username2" placeholder="username">
+                <input type="email" class="form-control" id="username2">
               </div>
               <div class="form-group col-md-8">
                 <label for="Password2" ><span class="spanStar">*</span>Password</label>
-                <input type="password" class="form-control" id="password2" placeholder="password">
+                <input type="password" class="form-control" id="password2" >
               </div>
               
               <div class="form-group col-md-8">
                 <label for="user_first_name"><span class="spanStar">*</span>First Name: </label>
-                <input type="text" class="form-control" id="user_first_name" name="user_first_name" placeholder="user_first_name" required>
+                <input type="text" class="form-control" id="user_first_name" name="user_first_name" required>
               </div>
               <div class="form-group col-md-8">
                 <label for="user_last_name"><span class="spanStar">*</span>Last Name: </label>
-                <input type="text" class="form-control" id="user_last_name" name="user_last_name" placeholder="user_last_name" required>
+                <input type="text" class="form-control" id="user_last_name" name="user_last_name"  required>
               </div>
               <div class="form-group col-md-8">
                 <label for="user_email"><span class="spanStar">*</span>Email: </label>
-                <input type="text" class="form-control" id="user_email" name="user_email" placeholder="user_email@example.com" required>
+                <input type="text" class="form-control" id="user_email" name="user_email"  required>
               </div>
               <div class="form-group col-md-8">
                 <label for="reimb_amount" class="mt-3"><span class="spanStar">*</span>Reimbursement Amount: </label>
-                <input type="number" class="form-control" id="reimb_amount" name="reimb_amount" placeholder="reimb_amount" required> 
+                <input type="number" class="form-control" id="reimb_amount" name="reimb_amount" required> 
             </div>
         
             <div class="form-group col-md-8">
               <label for="reimb_description"><span class="spanStar">*</span>Description: </label>
               <textarea type="text" class="form-control" id="reimb_description" name="reimb_description" placeholder="reimb_description" required></textarea>
             </div>
-             
-              <div class="form-group col-md-8">
-                <label for="reimb_status"><span class="spanStar">*</span>Reimbursement Status</label>
-                <select id="reimb_status" class="form-control" required>
-                  <option value="" disabled selected>Status</option>
-                  <option value="pending">pending</option>
-                  <option value="approved">approved</option>
-                  <option value="denied">denied</option>
-                </select>
-              </div>
               <div class="form-group col-md-8">
                 <label for="reimb_type"><span class="spanStar">*</span>Reimbursement Type</label>
                 <select id="reimb_type" class="form-control" required>

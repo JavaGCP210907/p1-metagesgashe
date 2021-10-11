@@ -17,10 +17,12 @@ import com.revature.models.ErsReimbursementStatus;
 import com.revature.models.ErsReimbursementType;
 import com.revature.models.ErsUser;
 import com.revature.services.ErsReimbursementService;
+import com.revature.services.LoginService;
 
 public class Tests {
 	
 	public static ErsReimbursementService ers;
+	public static LoginService logS = new LoginService();
 	
 	//some reference variables
 	static ErsReimbursementStatus ersStatus1 = new ErsReimbursementStatus("pending");
@@ -62,6 +64,13 @@ public class Tests {
 	
 	
 	
+	String manager  = "manager";
+	String pass = "456";
+	
+	String employee = "john";
+	String pass2 = "123";
+	
+	
 	
 	public ErsReimbursement result; //this one is uninitialized for now
 	
@@ -75,8 +84,7 @@ public class Tests {
 		System.out.println("In the @BeforeAll method");
 		
 		
-		ErsReimbursement addErs = new ErsReimbursement(reimb_amount, reimb_submitted, reimb_resolved, reimb_description, 
-				reimb_receipt, reimb_author, reimb_resolver, reimb_status, reimb_type);
+		ErsReimbursement addErs = new ErsReimbursement(reimb_amount, reimb_submitted, reimb_description, reimb_author, reimb_resolver, reimb_status, reimb_type);
 		ers.addErsReimbursement(addErs);
 	}
 	
@@ -109,8 +117,7 @@ public class Tests {
 	public void testAddErsReimbursement() {
 		System.out.println("TESTING ADD METHOD");
 		
-		ErsReimbursement addErs = new ErsReimbursement(300, "2021-10-16", null, "For other expenses", 
-				15, null, null, ersStatus2, ersType4);
+		ErsReimbursement addErs = new ErsReimbursement(300, "2021-10-16", "For other expenses", null, null, ersStatus2, ersType4);
 		
 		ers.addErsReimbursement(addErs);
 		
@@ -119,5 +126,27 @@ public class Tests {
 		
 		
 	}
+	
+	@Test
+	public void testManagerLogin() {
+		System.out.println("TESTING MANAGER LOGIN METHOD");
+		
+		
+		boolean boolResult = logS.mLogin(manager, pass);
+			
+		assertTrue(boolResult == true);
+	}
+	
+	@Test
+	public void testEmployeeLogin() {
+		System.out.println("TESTING EMPLOYEE LOGIN METHOD");
+		
+		
+		boolean boolResult2 = logS.eLogin(employee, pass2);
+			
+		assertTrue(boolResult2 == true);
+	}
+	
+
 
 }

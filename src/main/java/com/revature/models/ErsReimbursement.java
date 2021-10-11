@@ -28,14 +28,12 @@ public class ErsReimbursement {
 	@Column(name = "reimb_submitted", nullable = false)
 	private String reimb_submitted; 
 	
-	@Column(name = "reimb_resolved")
-	private Date reimb_resolved;
+	
 	
 	@Column(name = "reimb_description")
 	private String reimb_description;
 	
-	@Column(name = "reimb_receipt")
-	private int reimb_receipt;
+	
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "reimb_author") 
@@ -53,12 +51,14 @@ public class ErsReimbursement {
 	@JoinColumn(name = "reimb_type")
 	private ErsReimbursementType reimb_type;
 
+
+
 	@Override
 	public String toString() {
 		return "ErsReimbursement [reimb_id=" + reimb_id + ", reimb_amount=" + reimb_amount + ", reimb_submitted="
-				+ reimb_submitted + ", reimb_resolved=" + reimb_resolved + ", reimb_description=" + reimb_description
-				+ ", reimb_receipt=" + reimb_receipt + ", reimb_author=" + reimb_author + ", reimb_resolver="
-				+ reimb_resolver + ", reimb_status_id=" + reimb_status + ", reimb_type_id=" + reimb_type + "]";
+				+ reimb_submitted + ", reimb_description=" + reimb_description + ", reimb_author=" + reimb_author
+				+ ", reimb_resolver=" + reimb_resolver + ", reimb_status=" + reimb_status + ", reimb_type=" + reimb_type
+				+ "]";
 	}
 
 	public ErsReimbursement() {
@@ -66,35 +66,30 @@ public class ErsReimbursement {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ErsReimbursement(int reimb_amount, String reimb_submitted, Date reimb_resolved, String reimb_description,
-			int reimb_receipt, ErsUser reimb_author, ErsUser reimb_resolver, ErsReimbursementStatus reimb_status_id,
-			ErsReimbursementType reimb_type_id) {
+	public ErsReimbursement(int reimb_amount, String reimb_submitted, String reimb_description, ErsUser reimb_author,
+			ErsUser reimb_resolver, ErsReimbursementStatus reimb_status, ErsReimbursementType reimb_type) {
 		super();
 		this.reimb_amount = reimb_amount;
 		this.reimb_submitted = reimb_submitted;
-		this.reimb_resolved = reimb_resolved;
 		this.reimb_description = reimb_description;
-		this.reimb_receipt = reimb_receipt;
 		this.reimb_author = reimb_author;
 		this.reimb_resolver = reimb_resolver;
-		this.reimb_status = reimb_status_id;
-		this.reimb_type = reimb_type_id;
+		this.reimb_status = reimb_status;
+		this.reimb_type = reimb_type;
 	}
 
-	public ErsReimbursement(int reimb_id, int reimb_amount, String reimb_submitted, Date reimb_resolved,
-			String reimb_description, int reimb_receipt, ErsUser reimb_author, ErsUser reimb_resolver,
-			ErsReimbursementStatus reimb_status_id, ErsReimbursementType reimb_type_id) {
+	public ErsReimbursement(int reimb_id, int reimb_amount, String reimb_submitted, String reimb_description,
+			ErsUser reimb_author, ErsUser reimb_resolver, ErsReimbursementStatus reimb_status,
+			ErsReimbursementType reimb_type) {
 		super();
 		this.reimb_id = reimb_id;
 		this.reimb_amount = reimb_amount;
 		this.reimb_submitted = reimb_submitted;
-		this.reimb_resolved = reimb_resolved;
 		this.reimb_description = reimb_description;
-		this.reimb_receipt = reimb_receipt;
 		this.reimb_author = reimb_author;
 		this.reimb_resolver = reimb_resolver;
-		this.reimb_status = reimb_status_id;
-		this.reimb_type = reimb_type_id;
+		this.reimb_status = reimb_status;
+		this.reimb_type = reimb_type;
 	}
 
 	public int getReimb_id() {
@@ -121,28 +116,12 @@ public class ErsReimbursement {
 		this.reimb_submitted = reimb_submitted;
 	}
 
-	public Date getReimb_resolved() {
-		return reimb_resolved;
-	}
-
-	public void setReimb_resolved(Date reimb_resolved) {
-		this.reimb_resolved = reimb_resolved;
-	}
-
 	public String getReimb_description() {
 		return reimb_description;
 	}
 
 	public void setReimb_description(String reimb_description) {
 		this.reimb_description = reimb_description;
-	}
-
-	public int getReimb_receipt() {
-		return reimb_receipt;
-	}
-
-	public void setReimb_receipt(int reimb_receipt) {
-		this.reimb_receipt = reimb_receipt;
 	}
 
 	public ErsUser getReimb_author() {
@@ -176,8 +155,7 @@ public class ErsReimbursement {
 	public void setReimb_type(ErsReimbursementType reimb_type) {
 		this.reimb_type = reimb_type;
 	}
-	
-	
+
 	
 
 	
